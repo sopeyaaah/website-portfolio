@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core System Colors */
+    --color-background: #fdfcfb; /* warm white */
+    --color-foreground: #2d1b35; /* deep purple */
+    --color-border: #f2d1d8; /* soft pink border */
+    --color-input: #ffffff; /* white */
+    --color-ring: #e8b4b8; /* rose gold */
+    
+    /* Card & Surface Colors */
+    --color-card: #ffffff; /* white */
+    --color-card-foreground: #2d1b35; /* deep purple */
+    --color-popover: #ffffff; /* white */
+    --color-popover-foreground: #2d1b35; /* deep purple */
+    --color-muted: #f8f3f8; /* lavender muted */
+    --color-muted-foreground: #8b5a83; /* muted purple */
+    
+    /* Brand Colors */
+    --color-primary: #2d1b35; /* deep purple */
+    --color-primary-foreground: #ffffff; /* white */
+    --color-secondary: #8b5a83; /* muted purple */
+    --color-secondary-foreground: #ffffff; /* white */
+    
+    /* Action Colors */
+    --color-accent: #e8b4b8; /* rose gold */
+    --color-accent-foreground: #2d1b35; /* deep purple */
+    --color-destructive: #dc2626; /* red-600 */
+    --color-destructive-foreground: #ffffff; /* white */
+    
+    /* Status Colors */
+    --color-success: #059669; /* emerald-600 */
+    --color-success-foreground: #ffffff; /* white */
+    --color-warning: #d97706; /* amber-600 */
+    --color-warning-foreground: #ffffff; /* white */
+    --color-error: #dc2626; /* red-600 */
+    --color-error-foreground: #ffffff; /* white */
+    
+    /* Text Hierarchy */
+    --color-text-primary: #2d1b35; /* deep purple */
+    --color-text-secondary: #8b5a83; /* muted purple */
+    
+    /* Surface Variations */
+    --color-surface: #f8f3f8; /* lavender surface */
+    --color-surface-foreground: #2d1b35; /* deep purple */
+    
+    /* Animation Variables */
+    --animation-duration-fast: 150ms;
+    --animation-duration-normal: 300ms;
+    --animation-duration-slow: 600ms;
+    
+    /* Spacing System */
+    --spacing-xs: 0.5rem; /* 8px */
+    --spacing-sm: 0.75rem; /* 12px */
+    --spacing-md: 1rem; /* 16px */
+    --spacing-lg: 1.5rem; /* 24px */
+    --spacing-xl: 2rem; /* 32px */
+    --spacing-2xl: 3rem; /* 48px */
+    --spacing-3xl: 4rem; /* 64px */
+    --spacing-4xl: 6rem; /* 96px */
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Typography Base Styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-inter font-semibold tracking-tight;
+  }
+  
+  /* Code Typography */
+  code, pre {
+    @apply font-mono;
+  }
+  
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Focus Styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+  
+  /* Selection Styles */
+::selection  {
+    @apply text-accent-foreground;
+  }
+}
+
+@layer components {
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn var(--animation-duration-normal) ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp var(--animation-duration-normal) ease-out;
+  }
+  
+  .animate-typewriter {
+    overflow: hidden;
+    border-right: 2px solid var(--color-accent);
+    white-space: nowrap;
+    animation: typewriter 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes float-drift {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(5px, -10px) rotate(5deg); }
+    50% { transform: translate(-5px, -15px) rotate(-5deg); }
+    75% { transform: translate(5px, -10px) rotate(5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+
+  .animate-float-drift {
+    animation: float-drift 6s ease-in-out infinite;
+  }
+  
+  /* Interactive Elements */
+  .interactive-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .interactive-lift:hover {
+    @apply -translate-y-0.5 shadow-lg;
+  }
+  
+  /* Glass Effect */
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Feminine Gradient Effects */
+  .feminine-gradient {
+    background: linear-gradient(135deg, #f8bbd9, #e6e6fa, #e8b4b8);
+  }
+  
+  .soft-shadow {
+    box-shadow: 0 8px 32px rgba(232, 180, 184, 0.15);
+  }
+}
+
+@layer utilities {
+  /* Custom Shadow Utilities */
+  .shadow-brand-sm {
+    box-shadow: 0 1px 3px rgba(232, 180, 184, 0.2);
+  }
+  
+  .shadow-brand-md {
+    box-shadow: 0 4px 8px rgba(232, 180, 184, 0.2);
+  }
+  
+  .shadow-brand-lg {
+    box-shadow: 0 8px 24px rgba(232, 180, 184, 0.2);
+  }
+  
+  /* Text Utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Spacing Utilities */
+  .space-brand-xs { gap: var(--spacing-xs); }
+  .space-brand-sm { gap: var(--spacing-sm); }
+  .space-brand-md { gap: var(--spacing-md); }
+  .space-brand-lg { gap: var(--spacing-lg); }
+  .space-brand-xl { gap: var(--spacing-xl); }
+  .space-brand-2xl { gap: var(--spacing-2xl); }
+  .space-brand-3xl { gap: var(--spacing-3xl); }
+  .space-brand-4xl { gap: var(--spacing-4xl); }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--color-accent); }
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  :root {
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem; /* 8px */
+    --spacing-md: 0.75rem; /* 12px */
+    --spacing-lg: 1rem; /* 16px */
+    --spacing-xl: 1.5rem; /* 24px */
+    --spacing-2xl: 2rem; /* 32px */
+    --spacing-3xl: 2.5rem; /* 40px */
+    --spacing-4xl: 3rem; /* 48px */
+  }
+}
