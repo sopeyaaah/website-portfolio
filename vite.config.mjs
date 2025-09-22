@@ -12,10 +12,5 @@ export default defineConfig({
     chunkSizeWarningLimit: 2000,
   },
   plugins: [tsconfigPaths(), react(), tagger()],
-  server: {
-    port: "4028",
-    host: "0.0.0.0",
-    strictPort: true,
-    allowedHosts: ['.amazonaws.com', '.builtwithrocket.new']
-  }
-});
+  base: process.env.VITE_BASE_PATH || "/website-portfolio",
+  });
